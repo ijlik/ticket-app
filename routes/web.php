@@ -32,3 +32,11 @@ Route::get('/product', function () {
 Route::get('/user', function () {
     return view('user');
 });
+
+Route::get('/dashboard', function () {
+    return view('main');
+});
+
+Route::get('/participant_ticket', function () {
+    return view('participant');
+});
