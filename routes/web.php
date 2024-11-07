@@ -20,3 +20,15 @@ Route::get('/', function () {
 Route::get('/page3', function () {
     return view('page3');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/product', function () {
+    return view('product');
+});
+
+Route::get('/user', function () {
+    return view('user');
+});
