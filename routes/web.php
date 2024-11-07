@@ -21,6 +21,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+<<<<<<< HEAD
+Route::get('/product', function () {
+    return view('product');
+});
+=======
 Route::get('/user', function () {
     return view('user');
 });
+>>>>>>> main
