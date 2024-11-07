@@ -40,3 +40,7 @@ Route::get('/dashboard', function () {
 Route::get('/participant_ticket', function () {
     return view('participant');
 });
+
+    return view('main');
+});
+
