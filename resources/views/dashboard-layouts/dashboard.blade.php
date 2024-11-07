@@ -861,20 +861,19 @@
 		<div class="deznav">
 			<div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
-
-					<li><a class="ai-icon" href="/dashboard">
+					<li>
+						<a class="ai-icon" href="/dashboard">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
 					</li>
-					<li><a class="ai-icon" href="/events">
-							<i class="flaticon-025-events"></i>
+					<li>
+						<a class="ai-icon" href="/events">
+							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Events</span>
 						</a>
 					</li>
-
 				</ul>
-
 			</div>
 		</div>
 		<!--**********************************
