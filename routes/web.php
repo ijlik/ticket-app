@@ -24,3 +24,7 @@ Route::get('/dashboard', function () {
 Route::get('/events', function () {
     return view('events');
 });
+
+Route::get('/participant_tickets', function () {
+    return view('participant_tickets');
+});
