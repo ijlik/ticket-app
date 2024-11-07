@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/page4', function () {
     return view('page4');
 });
@@ -41,3 +42,8 @@ Route::get('/authentication', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+Route::get('/dashboard', function () {
+    return view('main');
+});
+>>>>>>> fa72b651ecb40f0a27bd663d2092b2408a5b5fed
