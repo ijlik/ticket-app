@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/page4', function () {
     return view('page4');
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+Route::get('/product', function () {
+    return view('product');
+});
+Route::get('/user', function () {
+    return view('user');
 });
