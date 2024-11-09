@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="form-head mb-4 d-flex flex-wrap align-items-center">
             <div class="me-auto">
-                <h2 class="font-w600 mb-0">Events</h2>
+                <h2 class="font-w600 mb-0">{{$title}}</h2>
                 <p>Dapatkan update event seru di sini!</p>
             </div>
             <div class="input-group search-area2 d-xl-inline-flex mb-2 me-lg-4 me-md-2">
@@ -88,7 +88,7 @@
                                             <span class="ticket-icon-1 mb-3">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                             </span>
-                                            <div class="fs-12 text-primary">24 June 2020</div>
+                                            <div class="fs-12 text-primary">24 Januari 2025</div>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                             <span class="ticket-icon-1 mb-3">
                                                 <i class="fa fa-usd" aria-hidden="true"></i>
                                             </span>
-                                            <div class="fs-12 text-primary">$124,00</div>
+                                            <div class="fs-12 text-primary">Rp.150.000</div>
                                         </div>
                                         <div class="text-center">
                                             <span class="ticket-icon-1 mb-3 disabled">
