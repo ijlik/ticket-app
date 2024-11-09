@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('location');
             $table->timestamp('start_date');
             $table->string('banner_image');
-            $table->integer('price');
+            $table->unsignedInteger('price');
             $table->timestamps();
         });
     }
