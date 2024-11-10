@@ -873,6 +873,12 @@
 							<span class="nav-text">Events</span>
 						</a>
 					</li>
+					<li>
+						<a class="ai-icon" href="/participant_tickets">
+							<i class="flaticon-025-dashboard"></i>
+							<span class="nav-text">Paricipant Tickets</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
