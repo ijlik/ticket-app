@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateEventRequest;
+use App\Http\Requests\IndexEventRequest;
 use App\Http\Requests\StoreEventsRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -11,7 +13,7 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(IndexEventRequest $request)
     {
         return view('events.index', ['title' => 'Events']);
     }
@@ -19,7 +21,7 @@ class EventController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(CreateEventRequest $request)
     {
         return view('events.create');
     }

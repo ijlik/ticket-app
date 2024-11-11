@@ -8,7 +8,7 @@ class StoreEventsRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->can('create events');
     }
 
     public function rules(): array

@@ -7,7 +7,9 @@
             <div class="form-head mb-4 d-flex flex-wrap align-items-center">
                 <div class="me-auto">
                     <h2 class="font-w600 mb-0">{{$title}}</h2>
+                    @can('create events')
                     <a href="{{ route('events.create') }}" class="btn btn-primary btn-sm">Create new Events</a>
+                    @endcan
                 </div>
                 <div class="input-group search-area2 d-xl-inline-flex mb-2 me-lg-4 me-md-2">
                     <button class="input-group-text"><i class="flaticon-381-search-2 text-primary"></i></button>
