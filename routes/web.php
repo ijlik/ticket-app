@@ -34,7 +34,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/events', function () {
-    return view('events');
+    return view('events', ['title' => 'Events']);
 });
 
 Route::get('/participant_tickets', function () {
