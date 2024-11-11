@@ -816,7 +816,7 @@
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
 									<div class="header-info me-3">
-										<span class="fs-16 font-w600 ">James P. Sullivan</span>
+										<span class="fs-16 font-w600 ">{{ auth()->user()['name'] }}</span>
 										<small class="text-end fs-14 font-w400">Super Admin</small>
 									</div>
 									<img src="/images/profile/pic1.jpg" width="20" alt="">
@@ -836,7 +836,7 @@
 										</svg>
 										<span class="ms-2">Inbox </span>
 									</a>
-									<a href="page-login.html" class="dropdown-item ai-icon">
+									<a href="#" onclick="document.getElementById('form-logout').submit()" class="dropdown-item ai-icon">
 										<svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 											<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
 											<polyline points="16 17 21 12 16 7"></polyline>
@@ -844,6 +844,9 @@
 										</svg>
 										<span class="ms-2">Logout </span>
 									</a>
+                                    <form action="{{ route('logout') }}" method="POST" style="display: none" id="form-logout">
+                                        @csrf
+                                    </form>
 								</div>
 							</li>
 						</ul>
