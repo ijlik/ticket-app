@@ -11,7 +11,11 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.5",
+<<<<<<< HEAD
         "spatie/laravel-permission": "*"
+=======
+        "spatie/laravel-permission": "^6.10"
+>>>>>>> 7c8c731477c28da3fab049e4f4ea73dab732844d
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
