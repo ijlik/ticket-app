@@ -1,4 +1,4 @@
-@extends('dashboard-layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
     <div class=" content-body default-height">
