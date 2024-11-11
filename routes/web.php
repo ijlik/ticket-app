@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 
 /*
@@ -19,6 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes([
+    'verify' => true
+]);
+
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -27,15 +37,6 @@ Route::get('/events', function () {
     return view('events');
 });
 
-Route::get('/authentication', function () {
-    return view('authentication');
-});
-
-Route::get('/authentication', [AuthController::class, 'showLoginForm'])->name('authentication');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
 Route::get('/participant_tickets', function () {
     return view('participant_tickets');
 });

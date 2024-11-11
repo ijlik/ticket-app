@@ -66,7 +66,7 @@
         <!-- Login Redirect -->
         <div class="mt-4 text-center">
             <p class="text-sm text-gray-600">Sudah punya akun?</p>
-            <a href="{{ url('authentication') }}" class="inline-block mt-2 px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            <a href="{{ url('login') }}" class="inline-block mt-2 px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                 Login
             </a>
         </div>
