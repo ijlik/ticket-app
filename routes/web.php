@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +21,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('main');
+Auth::routes([
+    'verify' => true
+]);
+
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::resource('/events', EventController::class, [
+        'only' => ['index', 'create', 'store', 'show']
+    ]);
+    Route::get('/events/{event}/participant', [EventController::class, 'getParticipant'])->name('events.getParticipant');
 });
 
-Route::get('/events', function () {
-    return view('events');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
 });
 
 Route::get('/participant_tickets', function () {
