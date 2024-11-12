@@ -31,6 +31,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('/events', EventController::class, [
         'only' => ['index', 'create', 'store', 'show']
     ]);
+
+    Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+
+
     Route::get('/events/{event}/participant', [EventController::class, 'getParticipant'])->name('events.getParticipant');
 });
 
