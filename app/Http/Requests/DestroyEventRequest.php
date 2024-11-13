@@ -11,7 +11,7 @@ class DestroyEventRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->can('destroy events');
+        return $this->user()->can('delete events');
     }
 
     /**

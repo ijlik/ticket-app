@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEventRequest;
+use App\Http\Requests\DestroyEventRequest;
 use App\Http\Requests\IndexEventRequest;
 use App\Http\Requests\StoreEventsRequest;
 use App\Models\Event;
@@ -67,10 +68,8 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DestroyEventRequest $request, string $id)
+    public function destroy(DestroyEventRequest $request, Event $event)
     {
-        $event = Event::findOrFail($id);
-
         $event->delete();
 
         return redirect()->route('events.index')->with('success', 'Event deleted successfully');

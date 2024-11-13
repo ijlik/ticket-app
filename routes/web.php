@@ -29,10 +29,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('/events', EventController::class, [
-        'only' => ['index', 'create', 'store', 'show']
+        'only' => ['index', 'create', 'store', 'show', 'destroy']
     ]);
-
-    Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 
 
     Route::get('/events/{event}/participant', [EventController::class, 'getParticipant'])->name('events.getParticipant');
