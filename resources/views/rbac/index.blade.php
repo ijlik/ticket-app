@@ -20,11 +20,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-3">
-                                    <input type="text" name="role" class="form-control" placeholder="New Role">
+                                    <input type="text" id="role" name="role" class="form-control" placeholder="New Role">
                                 </div>
                                 <div class="col-3">
-                                    <button style="vertical-align: center" class="btn btn-primary btn-sm">Add Role
-                                    </button>
+                                    <button style="vertical-align: center" type="button" onclick="createRole(document.getElementById('role').value)" class="btn btn-primary btn-sm">Add Role</button>
                                 </div>
                                 <div class="col-3">
                                     <input type="text" name="permission" class="form-control"
@@ -46,7 +45,7 @@
                                             Permission/Role
                                         </th>
                                         @foreach($roles as $role)
-                                            <th>{{ $role['name'] }}</th>
+                                            <th>{{ $role['name'] }} <span onclick="deleteRole('{{ $role['id'] }}')"><i class="fa fa-trash text-danger"></i></span></th>
                                         @endforeach
                                     </tr>
                                     </thead>
@@ -97,6 +96,56 @@
             })
                 .then((response) => response.json())
                 .then((json) => console.log(json));
+        }
+    </script>
+
+    <script>
+        function createRole(roleName) {
+            let url = '{{ route('api.rbac.store') }}';
+            let data = {
+                role: roleName
+            };
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            })
+                .then((response) => response.json())
+                .then(
+                    (json) => {
+                        console.log(json);
+                        location.reload();
+                    }
+                );
+        }
+    </script>
+
+    <script>
+        function deleteRole(roleId) {
+            if (confirm("Apakah anda ingin menghapus Role ini?") === true) {
+                let url = 'http://127.0.0.1:8000/api/rbac/role/'+roleId;
+                let data = {
+                    _method: 'DELETE'
+                };
+                fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then((response) => response.json())
+                    .then(
+                        (json) => {
+                            console.log(json);
+                            location.reload();
+                        }
+                    );
+            }
         }
     </script>
 @endpush
