@@ -15,7 +15,8 @@ class EventController extends Controller
      */
     public function index(IndexEventRequest $request)
     {
-        return view('events.index', ['title' => 'Events']);
+        $events = Event::all();
+        return view('events.index', ['title' => 'Events', 'events' => $events]);
     }
 
     /**
@@ -71,8 +72,5 @@ class EventController extends Controller
         //
     }
 
-    public function getParticipant(Event $event)
-    {
-
-    }
+    public function getParticipant(Event $event) {}
 }
