@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RbacController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,13 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('/events', EventController::class, [
-        'only' => ['index', 'create', 'store', 'show']
+        'only' => ['index', 'create', 'store', 'show', 'destroy']
     ]);
+
+
     Route::get('/events/{event}/participant', [EventController::class, 'getParticipant'])->name('events.getParticipant');
+
+    Route::get('/rbac', [RbacController::class, 'index']);
 });
 
 
