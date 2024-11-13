@@ -23,13 +23,17 @@
                                     <input type="text" name="role" class="form-control" placeholder="New Role">
                                 </div>
                                 <div class="col-3">
-                                    <button style="vertical-align: center" class="btn btn-primary btn-sm">Add Role</button>
+                                    <button style="vertical-align: center" class="btn btn-primary btn-sm">Add Role
+                                    </button>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" name="permission" class="form-control" placeholder="New Permission">
+                                    <input type="text" name="permission" class="form-control"
+                                           placeholder="New Permission">
                                 </div>
                                 <div class="col-3">
-                                    <button style="vertical-align: center" class="btn btn-primary btn-sm">Add Permission</button>
+                                    <button style="vertical-align: center" class="btn btn-primary btn-sm">Add
+                                        Permission
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -41,102 +45,27 @@
                                         <th style="width:50px;">
                                             Permission/Role
                                         </th>
-                                        <th>Role 1</th>
-                                        <th>Role 2</th>
-                                        <th>Role 3</th>
+                                        @foreach($roles as $role)
+                                            <th>{{ $role['name'] }}</th>
+                                        @endforeach
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Permission 1</td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Permission 2</td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Permission 3</td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Permission 4</td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Permission 5</td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach($permissions as $i => $permission)
+                                        <tr>
+                                            <td>{{ $permission['name'] }}</td>
+                                            @foreach($roles as $j => $role)
+                                                <td>
+                                                    <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="p-{{ $i }}-r-{{ $j }}"
+                                                               onchange="syncRole('p-{{ $i }}-r-{{ $j }}', '{{ $permission['id'] }}', '{{ $role->id }}')"
+                                                            {{ $role->permissions->where('id', $permission['id'])->first() ? 'checked' : '' }}>
+                                                    </div>
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -144,7 +73,30 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        function syncRole(id, permissionId, roleId) {
+            let permission = document.getElementById(id).checked;
+            let url = '{{ route('api.rbac.sync') }}';
+            let data = {
+                assign: permission,
+                permissionId: permissionId,
+                roleId: roleId
+            };
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            })
+                .then((response) => response.json())
+                .then((json) => console.log(json));
+        }
+    </script>
+@endpush

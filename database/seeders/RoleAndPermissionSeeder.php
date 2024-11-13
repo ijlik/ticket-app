@@ -26,8 +26,5 @@ class RoleAndPermissionSeeder extends Seeder
         $role->givePermissionTo($permissionCreate);
         $role->givePermissionTo($permissionEdit);
         $role->givePermissionTo($permissionDelete);
-
-        $user = User::first();
-        $user->assignRole($role);
     }
 }
