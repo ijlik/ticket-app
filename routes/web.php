@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('main');
 });
 
 Route::get('/participant_tickets', function () {
