@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/rbac/role', [RoleController::class, 'store']);
+Route::delete('/rbac/role/{role}', [RoleController::class, 'destroy']);
