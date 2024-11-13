@@ -26,11 +26,11 @@
                                     <button style="vertical-align: center" type="button" onclick="createRole(document.getElementById('role').value)" class="btn btn-primary btn-sm">Add Role</button>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" name="permission" class="form-control"
+                                    <input type="text" id="permission" name="permission" class="form-control"
                                            placeholder="New Permission">
                                 </div>
                                 <div class="col-3">
-                                    <button style="vertical-align: center" class="btn btn-primary btn-sm">Add
+                                    <button style="vertical-align: center" onclick="createPermission(document.getElementById('permission').value)" class="btn btn-primary btn-sm">Add
                                         Permission
                                     </button>
                                 </div>
@@ -146,6 +146,30 @@
                         }
                     );
             }
+        }
+    </script>
+
+    <script>
+        function createPermission(permissionName) {
+            let url = '{{ route('api.rbac.store') }}';
+            let data = {
+                permission: permissionName
+            };
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            })
+                .then((response) => response.json())
+                .then(
+                    (json) => {
+                        console.log(json);
+                        location.reload();
+                    }
+                );
         }
     </script>
 @endpush
