@@ -45,6 +45,11 @@
                                     <span class="ticket-icon-1 mb-3"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                     <div class="fs-12 text-primary">{{ \Carbon\Carbon::parse($event->start_date)->format('d M Y') }}</div>
                                 </div>
+                                @can('edit events')
+                                <div class="text-center mt-3">
+                                    <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                </div>
+                                @endcan
                             </div>
                         </div>
                         @endforeach

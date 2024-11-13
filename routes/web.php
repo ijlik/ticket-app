@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('/events', EventController::class, [
-        'only' => ['index', 'create', 'store', 'show', 'destroy']
+        'only' => ['index', 'create', 'store', 'show', 'destroy', 'edit', 'update']
     ]);
 
 
