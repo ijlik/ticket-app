@@ -31,7 +31,9 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="fs-18 mb-sm-0 mb-2">
-                                    <a href="javascript:void(0);" class="text-black">{{ $event->title }}</a>
+                                    <a href="{{ route('events.show', $event->id) }}" class="text-black" title="Show Detail" style="text-decoration: none; transition: all 0.3s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+                                        {{ $event->title }}
+                                    </a>
                                 </h4>
                                 <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">{{ $event->location }}</span>
                                 <p class="fs-12">{{ $event->description }}</p>

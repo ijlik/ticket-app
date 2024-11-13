@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/events/{event}/participant', [EventController::class, 'getParticipant'])->name('events.getParticipant');
 
     Route::get('/rbac', [RbacController::class, 'index']);
+
+    Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
 });
 
 
