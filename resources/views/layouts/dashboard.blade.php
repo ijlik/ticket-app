@@ -882,6 +882,12 @@
 							<span class="nav-text">Participant Tickets</span>
 						</a>
 					</li>
+                    <li>
+                        <a class="ai-icon" href="/rbac">
+                            <i class="flaticon-025-dashboard"></i>
+                            <span class="nav-text">Role Permission</span>
+                        </a>
+                    </li>
 				</ul>
 			</div>
 		</div>
