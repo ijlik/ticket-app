@@ -151,7 +151,7 @@
 
     <script>
         function createPermission(permissionName) {
-            let url = '{{ route('api.rbac.store') }}';
+            let url = '{{ route('api.rbac.store_permission') }}';
             let data = {
                 permission: permissionName
             };
