@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/rbac/role', [RoleController::class, 'store'])->name('api.rbac.store');
 Route::post('/rbac/sync', [RbacController::class, 'sync'])->name('api.rbac.sync');
 Route::delete('/rbac/role/{role}', [RoleController::class, 'destroy'])->name('api.rbac.destroy');
+Route::delete('/rbac/permission', [RbacController::class, 'destroyPermission'])->name('api.rbac.destroy_permission');

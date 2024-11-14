@@ -23,4 +23,23 @@ class RbacController extends Controller
             'data' => null
         ];
     }
+
+    public function destroyPermission(Request $request)
+{
+    $roleId = $request->input('roleId');
+    $permissionId = $request->input('permissionId');
+
+    // Temukan role berdasarkan ID
+    $role = Role::find($roleId);
+
+    if (!$role) {
+        return response()->json(['message' => 'Role not found'], 404);
+    }
+
+    // Hapus permission dari role
+    $role->permissions()->detach($permissionId);
+
+    return response()->json(['success' => true, 'message' => 'Permission berhasil dihapus']);
+}
+
 }
