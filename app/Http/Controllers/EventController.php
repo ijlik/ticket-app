@@ -44,9 +44,8 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        $event = Event::findOrFail($id);
         return view('events.show', compact('event'));
     }
 
