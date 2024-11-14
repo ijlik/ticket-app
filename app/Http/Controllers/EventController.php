@@ -52,17 +52,26 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Event $event)
     {
-        //
+        return view('events.edit', compact('event')); // Kirim data acara untuk diedit
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Event $event)
     {
-        //
+        $data = $request->all();
+
+        // Jika file gambar baru diupload
+        if ($request->hasFile('banner_image')) {
+            $data['banner_image'] = $request->file('banner_image')->store('images', 'public');
+        }
+
+        $event->update($data);
+
+        return redirect()->route('events.index')->with('success', 'Event updated successfully');
     }
 
     /**
@@ -77,3 +86,4 @@ class EventController extends Controller
 
     public function getParticipant(Event $event) {}
 }
+
