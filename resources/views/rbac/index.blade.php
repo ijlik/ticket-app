@@ -52,7 +52,12 @@
                                     <tbody>
                                     @foreach($permissions as $i => $permission)
                                         <tr>
-                                            <td>{{ $permission['name'] }}</td>
+                                            <td>
+                                                {{ $permission['name'] }}
+                                                <span onclick="deletePermission('{{ $permission['id'] }}')" style="cursor: pointer; margin-left: 10px;">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </span>
+                                            </td>
                                             @foreach($roles as $j => $role)
                                                 <td>
                                                     <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
@@ -148,4 +153,25 @@
             }
         }
     </script>
+    <script>
+        function deletePermission(permissionId) {
+            if (confirm("Apakah Anda ingin menghapus Permission ini dari semua Role?") === true) {
+                let url = `{{ url('api/rbac/permission/') }}/${permissionId}`;
+                fetch(url, {
+                    method: "DELETE",
+                    headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log(json);
+                        location.reload();
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+
 @endpush

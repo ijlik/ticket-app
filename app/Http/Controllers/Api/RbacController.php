@@ -23,4 +23,20 @@ class RbacController extends Controller
             'data' => null
         ];
     }
+    public function deletePermission($permissionId)
+    {
+        
+        $roles = Role::with('permissions')->get();
+
+        foreach ($roles as $role) {
+            if ($role->permissions->contains('id', $permissionId)) {
+                $role->revokePermissionTo($permissionId);
+            }
+        }
+
+        return [
+            'data' => null
+        ];
+    }
+
 }
