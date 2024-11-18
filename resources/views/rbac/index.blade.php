@@ -25,22 +25,14 @@
                             <div class="col-3">
                                 <button style="vertical-align: center" type="button" onclick="createRole(document.getElementById('role').value)" class="btn btn-primary btn-sm">Add Role</button>
                             </div>
-                            <div class="row">
-                                <div class="col-3">
-                                    <input type="text" id="role" name="role" class="form-control" placeholder="New Role">
-                                </div>
-                                <div class="col-3">
-                                    <button style="vertical-align: center" type="button" onclick="createRole(document.getElementById('role').value)" class="btn btn-primary btn-sm">Add Role</button>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" id="permission" name="permission" class="form-control"
-                                           placeholder="New Permission">
-                                </div>
-                                <div class="col-3">
-                                    <button style="vertical-align: center" onclick="createPermission(document.getElementById('permission').value)" class="btn btn-primary btn-sm">Add
-                                        Permission
-                                    </button>
-                                </div>
+                            <div class="col-3">
+                                <input type="text" id="permission" name="permission" class="form-control"
+                                       placeholder="New Permission">
+                            </div>
+                            <div class="col-3">
+                                <button style="vertical-align: center" onclick="createPermission(document.getElementById('permission').value)" class="btn btn-primary btn-sm">Add
+                                    Permission
+                                </button>
                             </div>
                         </div>
                     </div>
