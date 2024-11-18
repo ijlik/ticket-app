@@ -31,7 +31,9 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="fs-18 mb-sm-0 mb-2">
-                                    <a href="javascript:void(0);" class="text-black">{{ $event->title }}</a>
+                                    <a href="{{ route('events.show', $event->id) }}" class="text-black" title="Show Detail" style="text-decoration: none; transition: all 0.3s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+                                        {{ $event->title }}
+                                    </a>
                                 </h4>
                                 <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">{{ $event->location }}</span>
                                 <p class="fs-12">{{ $event->description }}</p>
@@ -45,6 +47,11 @@
                                     <span class="ticket-icon-1 mb-3"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                     <div class="fs-12 text-primary">{{ \Carbon\Carbon::parse($event->start_date)->format('d M Y') }}</div>
                                 </div>
+                                @can('edit events')
+                                <div class="text-center mt-3">
+                                    <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                </div>
+                                @endcan
                             </div>
                         </div>
                         @endforeach
