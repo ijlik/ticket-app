@@ -153,19 +153,20 @@
             };
 
             fetch(url, {
-                    method: "DELETE",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-type": "application/json"
-                    }
-                })
+                method: "DELETE",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            })
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
                     location.reload();
                 });
         }
+    }
     </script>
 
     <script>
