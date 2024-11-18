@@ -52,11 +52,10 @@
                                 <tbody>
                                     @foreach($permissions as $i => $permission)
                                     <tr>
-                                        <td>{{ $permission['name'] }}</td>
-                                        <td>
-                                            <button onclick="deletePermission('{{ $role->id }}', '{{ $permission->id }}')" class="btn btn-danger btn-sm">
+                                        <td>{{ $permission['name'] }}
+                                            <span style="cursor:pointer;" onclick="deletePermission('{{ $role->id }}', '{{ $permission->id }}')" class="badge badge-danger">
                                                 Hapus Permission
-                                            </button>
+                                            </span>
                                         </td>
                                         @foreach($roles as $j => $role)
                                         <td>
