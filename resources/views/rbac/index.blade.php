@@ -25,11 +25,22 @@
                             <div class="col-3">
                                 <button style="vertical-align: center" type="button" onclick="createRole(document.getElementById('role').value)" class="btn btn-primary btn-sm">Add Role</button>
                             </div>
-                            <div class="col-3">
-                                <input type="text" name="permission" class="form-control" placeholder="New Permission">
-                            </div>
-                            <div class="col-3">
-                                <button style="vertical-align: center" class="btn btn-primary btn-sm">Add Permission</button>
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="text" id="role" name="role" class="form-control" placeholder="New Role">
+                                </div>
+                                <div class="col-3">
+                                    <button style="vertical-align: center" type="button" onclick="createRole(document.getElementById('role').value)" class="btn btn-primary btn-sm">Add Role</button>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" id="permission" name="permission" class="form-control"
+                                           placeholder="New Permission">
+                                </div>
+                                <div class="col-3">
+                                    <button style="vertical-align: center" onclick="createPermission(document.getElementById('permission').value)" class="btn btn-primary btn-sm">Add
+                                        Permission
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,6 +175,29 @@
                     location.reload();
                 });
         }
-    }
-</script>
+    </script>
+
+    <script>
+        function createPermission(permissionName) {
+            let url = '{{ route('api.rbac.store_permission') }}';
+            let data = {
+                permission: permissionName
+            };
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            })
+                .then((response) => response.json())
+                .then(
+                    (json) => {
+                        console.log(json);
+                        location.reload();
+                    }
+                );
+        }
+    </script>
 @endpush
