@@ -26,10 +26,13 @@
                                 <button style="vertical-align: center" type="button" onclick="createRole(document.getElementById('role').value)" class="btn btn-primary btn-sm">Add Role</button>
                             </div>
                             <div class="col-3">
-                                <input type="text" name="permission" class="form-control" placeholder="New Permission">
+                                <input type="text" id="permission" name="permission" class="form-control"
+                                       placeholder="New Permission">
                             </div>
                             <div class="col-3">
-                                <button style="vertical-align: center" class="btn btn-primary btn-sm">Add Permission</button>
+                                <button style="vertical-align: center" onclick="createPermission(document.getElementById('permission').value)" class="btn btn-primary btn-sm">Add
+                                    Permission
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -48,24 +51,24 @@
                                 </thead>
                                 <tbody>
                                     @foreach($permissions as $i => $permission)
-                                        <tr>
-                                            <td>
-                                                {{ $permission['name'] }}
-                                                <span onclick="deletePermission('{{ $permission['id'] }}')" style="cursor: pointer; margin-left: 10px;">
-                                                    <i class="fa fa-trash text-danger"></i>
-                                                </span>
-                                            </td>
-                                            @foreach($roles as $j => $role)
-                                                <td>
-                                                    <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
-                                                        <input type="checkbox" class="form-check-input"
-                                                               id="p-{{ $i }}-r-{{ $j }}"
-                                                               onchange="syncRole('p-{{ $i }}-r-{{ $j }}', '{{ $permission['id'] }}', '{{ $role->id }}')"
-                                                            {{ $role->permissions->where('id', $permission['id'])->first() ? 'checked' : '' }}>
-                                                    </div>
-                                                </td>
-                                            @endforeach
-                                        </tr>
+                                    <tr>
+                                        <td>{{ $permission['name'] }}
+                                            <span style="cursor:pointer;" onclick="deletePermission('{{ $role->id }}', '{{ $permission->id }}')" class="badge badge-danger">
+                                                Hapus Permission
+                                            </span>
+                                        </td>
+                                        @foreach($roles as $j => $role)
+                                        <td>
+                                            <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                                <input type="checkbox" class="form-check-input"
+                                                    id="p-{{ $i }}-r-{{ $j }}"
+                                                    onchange="syncRole('p-{{ $i }}-r-{{ $j }}', '{{ $permission['id'] }}', '{{ $role->id }}')"
+                                                    {{ $role->permissions->where('id', $permission['id'])->first() ? 'checked' : '' }}>
+                                            </div>
+                                        </td>
+                                        @endforeach
+                                    </tr>
+>>>>>>> f79dd6ad324aa8976b46df5b560fa335afe1ff72
                                     @endforeach
                                 </tbody>
                             </table>
@@ -176,13 +179,13 @@
             };
 
             fetch(url, {
-                    method: "DELETE",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-type": "application/json"
-                    }
-                })
+                method: "DELETE",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            })
                 .then((response) => response.json())
                 .then((json) => {
                     console.log(json);
@@ -190,6 +193,35 @@
                 });
         }
     }
+<<<<<<< HEAD
 </script>
 @endpush
 >>>>>>> bd8cc54903d0eea8db88f037b7567a7167139e30
+=======
+    </script>
+
+    <script>
+        function createPermission(permissionName) {
+            let url = '{{ route('api.rbac.store_permission') }}';
+            let data = {
+                permission: permissionName
+            };
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            })
+                .then((response) => response.json())
+                .then(
+                    (json) => {
+                        console.log(json);
+                        location.reload();
+                    }
+                );
+        }
+    </script>
+@endpush
+>>>>>>> f79dd6ad324aa8976b46df5b560fa335afe1ff72

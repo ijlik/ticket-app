@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\RbacController;
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\PermissionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/rbac/role', [RoleController::class, 'store'])->name('api.rbac.store');
 Route::post('/rbac/sync', [RbacController::class, 'sync'])->name('api.rbac.sync');
 Route::delete('/rbac/role/{role}', [RoleController::class, 'destroy'])->name('api.rbac.destroy');
-Route::delete('/rbac/permission/{permission}', [RbacController::class, 'deletePermission'])->name('api.rbac.permission.delete');
+Route::post('/rbac/permission', [PermissionController::class, 'store'])->name('api.rbac.store_permission');
+Route::delete('/rbac/permission', [RbacController::class, 'destroyPermission'])->name('api.rbac.destroy_permission');
+
