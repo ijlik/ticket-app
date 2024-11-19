@@ -11,6 +11,26 @@
         <p><strong>Description:</strong></p>
         <p>{{ $event->description }}</p>
         <a href="{{ route('events.index') }}" class="btn btn-secondary">Back to Events</a>
+        <hr>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        
+         <h3 class="mt-4">Buy Ticket</h3>
+        <form action="{{ route('tickets.purchase', $event->id) }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Purchase Ticket</button>
+        </form>
     </div>
 </div>
 @endsection

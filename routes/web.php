@@ -3,6 +3,8 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RbacController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,10 +42,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('main');
-});
+    Route::get('/dashboard', function () {
+        return view('main');
+    });
 
 Route::get('/participant_tickets', function () {
     return view('participant_tickets');
 });
+
+Route::post('/tickets/purchase/{event}', [TicketController::class, 'purchase'])->name('tickets.purchase');
+
+Route::get('/dashboard', [DashboardController::class, 'showTickets'])->name('dashboard');
+

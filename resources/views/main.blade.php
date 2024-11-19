@@ -139,6 +139,63 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-6 col-xxl-12">
+                    <div class="card latest-sales-bx">
+                        <div class="card-header border-0 mb-0">
+                            <h4 class="fs-20 card-title">Latest Sales</h4>
+                            <div class="dropdown custom-dropdown mb-0 tbl-orders-style">
+                                <div class="btn sharp tp-btn" data-bs-toggle="dropdown">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                            stroke="#194039" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round"/>
+                                        <path
+                                                d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
+                                                stroke="#194039" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round"/>
+                                        <path
+                                            d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+                                            stroke="#194039" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round"/>
+                                        </svg>
+                                </div>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pb-0 dz-scroll loadmore-content pt-0" id="LatestSalesContent">
+                        @if(count($tickets) > 0)
+                            @foreach($tickets as $ticket)
+                            <div class="media pb-3 border-bottom mb-3 align-items-center">
+                                <div class="media-image me-2">
+                                    <img src="/images/contacts/pic1.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="fs-16 mb-0">{{ $ticket->name }}</h6>
+                                    <div class="d-flex">
+                                        <span class="fs-14 me-auto text-secondary"><i
+                                            class="fa fa-ticket me-1"></i>{{ $ticket->event->name }}</span>
+                                        <span class="fs-14 text-nowrap">{{ $ticket->created_at->diffForHumans() }}</span>
+                                    </div>
+                                    <p class="text-muted fs-14 mb-0">Price: ${{ number_format($ticket->price, 2) }}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                        @else
+                            <p>No tickets found.</p>
+                        @endif
+                        </div>
+                        <div class="card-footer style-1 border-0 px-0">
+                            <a href="javascript:void();"
+                                class="dz-load-more fa fa-long-arrow-down text-secondary" id="LatestSales"
+                                rel="ajax/latest-sales.html"></a>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xl-12">
                     <div class="row">
                         <div class="col-xl-6">
@@ -558,148 +615,6 @@
                                     <a href="javascript:void(0);"
                                        class="btn btn-secondary btn-lg  text-white dz-load-more" id="EventList"
                                        rel="ajax/event-list.html">Load More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-xxl-12">
-                            <div class="card latest-sales-bx">
-                                <div class="card-header border-0 mb-0">
-                                    <h4 class="fs-20 card-title">Latest Sales</h4>
-                                    <div class="dropdown custom-dropdown mb-0 tbl-orders-style">
-                                        <div class="btn sharp tp-btn" data-bs-toggle="dropdown">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
-                                                    stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                                <path
-                                                    d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
-                                                    stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                                <path
-                                                    d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
-                                                    stroke="#194039" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                            </svg>
-                                        </div>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                            <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body pb-0 dz-scroll loadmore-content pt-0" id="LatestSalesContent">
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="/images/contacts/pic1.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Olivia Johanson</h6>
-                                            <div class="d-flex">
-                                                <span class="fs-14 me-auto text-secondary"><i
-                                                        class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-                                                <span class="fs-14 text-nowrap">2m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="/images/contacts/pic2.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Griezerman</h6>
-                                            <div class="d-flex">
-                                                <span class="fs-14 me-auto text-secondary"><i
-                                                        class="fa fa-ticket me-1"></i>Fireworks Show New Year 2020</span>
-                                                <span class="fs-14 text-nowrap">5m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="/images/contacts/pic3.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Uli Trumb</h6>
-                                            <div class="d-flex">
-                                                <span class="fs-14 me-auto text-secondary"><i
-                                                        class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-                                                <span class="fs-14 text-nowrap">8m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="/images/contacts/pic1.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Oconner</h6>
-                                            <div class="d-flex">
-                                                <span class="fs-14 me-auto text-secondary"><i
-                                                        class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-                                                <span class="fs-14 text-nowrap">9m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media pb-3 border-bottom mb-3 align-items-center">
-                                        <div class="media-image me-2">
-                                            <img src="/images/contacts/pic1.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="fs-16 mb-0">Oconner</h6>
-                                            <div class="d-flex">
-                                                <span class="fs-14 me-auto text-secondary"><i
-                                                        class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-                                                <span class="fs-14 text-nowrap">9m ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer style-1 border-0 px-0">
-                                    <a href="javascript:void();"
-                                       class="dz-load-more fa fa-long-arrow-down text-secondary" id="LatestSales"
-                                       rel="ajax/latest-sales.html"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-xxl-12">
-                            <div class="card">
-                                <div class="card-header border-0 flex-wrap pb-0">
-                                    <h4 class="fs-20 font-w500 card-title">Sales Revenue</h4>
-                                    <div class="card-action coin-tabs">
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" data-bs-toggle="tab" href="#Monthly1">
-                                                    Monthly
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link " data-bs-toggle="tab" href="#Weekly1">
-                                                    Weekly
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link " data-bs-toggle="tab" href="#Daily1">
-                                                    Daily
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="card-body pb-2">
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade active show" id="Monthly1">
-                                            <div id="salesChart" class="chart-primary"></div>
-                                        </div>
-                                        <div class="tab-pane fade" id="Weekly1">
-                                            <div id="salesChart1" class="chart-primary"></div>
-
-                                        </div>
-                                        <div class="tab-pane fade" id="Daily1">
-                                            <div id="salesChart2" class="chart-primary"></div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
