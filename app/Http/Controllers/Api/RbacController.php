@@ -26,19 +26,23 @@ class RbacController extends Controller
 
     public function destroyPermission(Request $request, $roleId, $permissionId)
     {
+        
         $permission = \App\Models\Permission::find($permissionId);
 
         if ($permission) {
-        // Hapus permission dari semua role yang memiliki permission tersebut
+    
             \App\Models\Role::whereHas('permissions', function ($query) use ($permissionId) {
                 $query->where('id', $permissionId);
             })->each(function ($role) use ($permissionId) {
-            $role->permissions()->detach($permissionId);
+                $role->permissions()->detach($permissionId);
             });
+
+            $permission->delete();
         }
 
         return ['data' => null];
     }
+
 
 
 }
