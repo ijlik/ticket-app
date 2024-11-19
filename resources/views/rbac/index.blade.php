@@ -68,6 +68,7 @@
                                         </td>
                                         @endforeach
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -141,31 +142,6 @@
                     location.reload();
                 });
         }
-<<<<<<< HEAD
-    </script>
-    <script>
-        function deletePermission(permissionId) {
-            if (confirm("Apakah Anda ingin menghapus Permission ini dari semua Role?") === true) {
-                let url = `{{ url('api/rbac/permission/') }}/${permissionId}`;
-                fetch(url, {
-                    method: "DELETE",
-                    headers: {
-                    "Accept": "application/json",
-                    "Content-type": "application/json"
-                    }
-                })
-                    .then(response => response.json())
-                    .then(json => {
-                        console.log(json);
-                        location.reload();
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-        }
-    </script>
-
-@endpush
-=======
     }
 
     function deletePermission(roleId, permissionId) {
@@ -191,11 +167,6 @@
                 });
         }
     }
-<<<<<<< HEAD
-</script>
-@endpush
->>>>>>> bd8cc54903d0eea8db88f037b7567a7167139e30
-=======
     </script>
 
     <script>
@@ -222,4 +193,3 @@
         }
     </script>
 @endpush
->>>>>>> f79dd6ad324aa8976b46df5b560fa335afe1ff72
