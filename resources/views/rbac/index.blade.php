@@ -68,8 +68,6 @@
                                         </td>
                                         @endforeach
                                     </tr>
->>>>>>> f79dd6ad324aa8976b46df5b560fa335afe1ff72
-                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
