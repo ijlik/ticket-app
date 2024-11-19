@@ -146,15 +146,12 @@
 
     function deletePermission(roleId, permissionId) {
         if (confirm("Apakah anda ingin menghapus Permission ini?") === true) {
-            let url = '{{ route('api.rbac.destroy_permission') }}';
-            let data = {
-                roleId: roleId,
-                permissionId: permissionId
-            };
+            let url = '{{ route('api.rbac.destroy_permission', ['roleId' => ':roleId', 'permissionId' => ':permissionId']) }}'
+                        .replace(':roleId', roleId)
+                        .replace(':permissionId', permissionId);
 
             fetch(url, {
                 method: "DELETE",
-                body: JSON.stringify(data),
                 headers: {
                     "Accept": "application/json",
                     "Content-type": "application/json"
