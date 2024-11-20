@@ -7,7 +7,9 @@ use App\Http\Requests\DestroyEventRequest;
 use App\Http\Requests\IndexEventRequest;
 use App\Http\Requests\StoreEventsRequest;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class EventController extends Controller
 {
