@@ -871,15 +871,21 @@
 						</a>
 					</li>
 					<li>
+						<a class="ai-icon" href="/participants">
+							<i class="flaticon-025-dashboard"></i>
+							<span class="nav-text">Participants</span>
+						</a>
+					</li>
+					<li>
 						<a class="ai-icon" href="/events">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Events</span>
 						</a>
 					</li>
 					<li>
-						<a class="ai-icon" href="/participants_ticket">
+						<a class="ai-icon" href="/participant_tickets">
 							<i class="flaticon-025-dashboard"></i>
-							<span class="nav-text">Participants Ticket</span>
+							<span class="nav-text">Participant Tickets</span>
 						</a>
 					</li>
 					<li>

@@ -4,22 +4,25 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateParticipantTicketsTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('participants_ticket', function (Blueprint $table) {
+        Schema::create('participant_tickets', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('participant_id');
             $table->uuid('event_id');
-            $table->string('ticket_number')->unique();
+            $table->string('ticket_number');
             $table->integer('price');
             $table->json('payment_data')->nullable();
             $table->timestamps();
 
+            // Tambahkan foreign key jika perlu
             $table->foreign('participant_id')->references('id')->on('participants')->onDelete('cascade');
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
@@ -27,9 +30,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('participants_ticket');
+        Schema::dropIfExists('participant_tickets');
     }
-};
+}
