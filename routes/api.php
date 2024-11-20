@@ -25,4 +25,6 @@ Route::post('/rbac/role', [RoleController::class, 'store'])->name('api.rbac.stor
 Route::post('/rbac/sync', [RbacController::class, 'sync'])->name('api.rbac.sync');
 Route::delete('/rbac/role/{role}', [RoleController::class, 'destroy'])->name('api.rbac.destroy');
 Route::post('/rbac/permission', [PermissionController::class, 'store'])->name('api.rbac.store_permission');
-Route::delete('/rbac/permission', [RbacController::class, 'destroyPermission'])->name('api.rbac.destroy_permission');
+Route::delete('/rbac/permission/{roleId}/{permissionId}', [RbacController::class, 'destroyPermission'])->name('api.rbac.destroy_permission');
+
+
