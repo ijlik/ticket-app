@@ -844,9 +844,9 @@
 										</svg>
 										<span class="ms-2">Logout </span>
 									</a>
-                                    <form action="{{ route('logout') }}" method="POST" style="display: none" id="form-logout">
-                                        @csrf
-                                    </form>
+									<form action="{{ route('logout') }}" method="POST" style="display: none" id="form-logout">
+										@csrf
+									</form>
 								</div>
 							</li>
 						</ul>
@@ -871,6 +871,12 @@
 						</a>
 					</li>
 					<li>
+						<a class="ai-icon" href="/participants">
+							<i class="flaticon-025-dashboard"></i>
+							<span class="nav-text">Participants</span>
+						</a>
+					</li>
+					<li>
 						<a class="ai-icon" href="/events">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Events</span>
@@ -882,12 +888,12 @@
 							<span class="nav-text">Participant Tickets</span>
 						</a>
 					</li>
-                    <li>
-                        <a class="ai-icon" href="/rbac">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Role Permission</span>
-                        </a>
-                    </li>
+					<li>
+						<a class="ai-icon" href="/rbac">
+							<i class="flaticon-025-dashboard"></i>
+							<span class="nav-text">Role Permission</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -944,7 +950,7 @@
 	<script src="/js/deznav-init.js"></script>
 	<script src="/js/demo.js"></script>
 	<script src="/js/styleSwitcher.js"></script>
-    @stack('script')
+	@stack('script')
 </body>
 
 </html>
