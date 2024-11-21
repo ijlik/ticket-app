@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: MyTicketApp
+        working_dir: /var/www/ticket-app
+        depends_on:
+            - db
+            - redis
+        volumes:
+            - .:/var/www/ticket-app
+        networks:
+            - app-network
+        entrypoint: ["/usr/local/bin/init.sh"]
+
+    web:
+        image: nginx:latest
+        container_name: nginx_web
+        ports:
+            - "80:80"
+        volumes:
+            - ./docker-compose:/etc/nginx/conf.d/
+            - .:/var/www/ticket-app
+        networks:
+            - app-network
+        depends_on:
+            - app
+
+    db:
+        image: postgres:14
+        container_name: postgres_db
+        environment:
+            POSTGRES_DB: my_ticket_app
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - db_data:/var/lib/postgresql/data
+        networks:
+            - app-network
+
+    redis:
+        image: redis/redis-stack-server:latest
+        container_name: redis_server
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    db_data:
