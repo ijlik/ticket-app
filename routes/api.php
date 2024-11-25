@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\RbacController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\PermissionController;
@@ -27,4 +28,5 @@ Route::delete('/rbac/role/{role}', [RoleController::class, 'destroy'])->name('ap
 Route::post('/rbac/permission', [PermissionController::class, 'store'])->name('api.rbac.store_permission');
 Route::delete('/rbac/permission/{roleId}/{permissionId}', [RbacController::class, 'destroyPermission'])->name('api.rbac.destroy_permission');
 
-Route::post('/event/search', \App\Http\Controllers\Api\EventController::class);
+Route::post('/event/search/database', [EventController::class, 'searchDatabase']);
+Route::post('/event/search/meilisearch', [EventController::class, 'searchMeilisearch']);

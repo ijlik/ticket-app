@@ -9,13 +9,18 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function __invoke(Request $request)
+    public function searchMeilisearch(Request $request)
     {
-//        $events = Event::where('title', 'like', '%' . $request['query'] . '%')
-//            ->orWhere('description', 'like', '%' . $request['query'] . '%')
-//            ->get();
-
         $events = Event::search($request['query'])->get()->exactMatch($request['query'], ['title', 'description']);
+
+        return EventResource::collection($events);
+    }
+
+    public function searchDatabase(Request $request)
+    {
+        $events = Event::where('title', 'like', '%' . $request['query'] . '%')
+            ->orWhere('description', 'like', '%' . $request['query'] . '%')
+            ->get();
 
         return EventResource::collection($events);
     }
