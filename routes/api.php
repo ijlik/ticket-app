@@ -27,4 +27,4 @@ Route::delete('/rbac/role/{role}', [RoleController::class, 'destroy'])->name('ap
 Route::post('/rbac/permission', [PermissionController::class, 'store'])->name('api.rbac.store_permission');
 Route::delete('/rbac/permission/{roleId}/{permissionId}', [RbacController::class, 'destroyPermission'])->name('api.rbac.destroy_permission');
 
-
+Route::post('/event/search', \App\Http\Controllers\Api\EventController::class);
