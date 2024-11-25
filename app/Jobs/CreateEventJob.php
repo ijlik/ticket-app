@@ -25,7 +25,7 @@ class CreateEventJob implements ShouldQueue
      */
     public function handle(): void
     {
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             \App\Models\Event::factory()->create();
         }
     }
