@@ -20,7 +20,7 @@
             <div class="col-xl-12">
                 <div class="card event-bx">
                     <div class="card-header border-0 mb-0">
-                        <h4 class="fs-20 card-title">Daftar Acara Terbaru Disaatnya</h4>
+                        <h4 class="fs-20 card-title">Daftar Acara Terbaru</h4>
                     </div>
                     <div class="card-body dz-scroll loadmore-content pt-0" id="EventListContent">
                         @foreach($events as $event)
