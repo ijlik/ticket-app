@@ -20,7 +20,7 @@
             <div class="col-xl-12">
                 <div class="card event-bx">
                     <div class="card-header border-0 mb-0">
-                        <h4 class="fs-20 card-title">Daftar Acara Terbaru</h4>
+                        <h4 class="fs-20 card-title">Daftar Acara Terbaru Disaatnya</h4>
                     </div>
                     <div class="card-body dz-scroll loadmore-content pt-0" id="EventListContent">
                         @foreach($events as $event)
@@ -38,18 +38,50 @@
                                 <span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">{{ $event->location }}</span>
                                 <p class="fs-12">{{ $event->description }}</p>
                             </div>
-                            <div class="media-footer">
+                            <div class="media-footer d-flex justify-content-between align-items-center" style="gap: 20px; flex-wrap: wrap;">
+
+                                {{-- Harga --}}
                                 <div class="text-center">
-                                    <span class="ticket-icon-1 mb-3"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                                    <span class="ticket-icon-1 mb-2 d-block">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                    </span>
                                     <div class="fs-12 text-primary">Rp.{{ number_format($event->price, 2) }}</div>
                                 </div>
+
+                                {{-- Tanggal --}}
                                 <div class="text-center">
-                                    <span class="ticket-icon-1 mb-3"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                    <div class="fs-12 text-primary">{{ \Carbon\Carbon::parse($event->start_date)->format('d M Y') }}</div>
+                                    <span class="ticket-icon-1 mb-2 d-block">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                    <div class="fs-12 text-primary">
+                                        {{ \Carbon\Carbon::parse($event->start_date)->format('d M Y') }}
+                                    </div>
                                 </div>
+
+                                {{-- Action Edit + Delete --}}
                                 @can('edit events')
-                                <div class="text-center mt-3">
-                                    <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <div class="ms-auto d-flex align-items-center" style="background-color: #f8f9fa; border-radius: 12px; padding: 10px 16px; box-shadow: 0 0 4px rgba(0,0,0,0.1); gap: 12px;">
+
+                                    {{-- Tombol Edit --}}
+                                    <a href="{{ route('events.edit', $event->id) }}" title="Edit" style="color: #138f68ff; font-size: 1.25rem;">
+                                        <i class="fas fa-edit" style="transition: transform 0.2s ease;"
+                                            onmouseover="this.style.transform='scale(1.2)'"
+                                            onmouseout="this.style.transform='scale(1)'">
+                                        </i>
+                                    </a>
+
+                                    {{-- Tombol Delete --}}
+                                    <form action="{{ route('events.destroy', $event->id) }}" method="POST" onsubmit="return confirm('Are you sure want to delete this event?')" style="margin: 0;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" title="Delete" style="color: #dc3545; background: none; border: none; font-size: 1.25rem;">
+                                            <i class="fas fa-trash-alt" style="transition: transform 0.2s ease;"
+                                                onmouseover="this.style.transform='scale(1.2)'"
+                                                onmouseout="this.style.transform='scale(1)'">
+                                            </i>
+                                        </button>
+                                    </form>
+
                                 </div>
                                 @endcan
                             </div>
