@@ -883,7 +883,7 @@
 						</a>
 					</li>
 					<li>
-						<a class="ai-icon" href="/participant_tickets">
+						<a class="ai-icon" href="/participant_ticket">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Participant Tickets</span>
 						</a>

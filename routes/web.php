@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ParticipantsTicketController;
+use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\ParticipantTicketController;
 use App\Http\Controllers\RbacController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('/rbac', [RbacController::class, 'index']);
 
-    Route::resource('/participants_ticket', ParticipantsTicketController::class);
+    Route::resource('/participants', ParticipantController::class);
+
+    Route::resource('/participant_ticket', ParticipantTicketController::class);
 });
 
 
