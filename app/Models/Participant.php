@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,16 +11,17 @@ class Participant extends Model
     use HasFactory;
 
     protected $table = 'participants';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
-    protected $fillable = [
-        'id',
-        'name',
-        'email',
-    ];
+    protected $fillable = ['name', 'email'];
 
-    protected $casts = [
-        'id' => 'string',
-    ];
+    protected static function booted()
+    {
+        static::creating(function ($participant) {
+            $participant->id = (string) Str::uuid();
+        });
+    }
 
     public function tickets()
     {
