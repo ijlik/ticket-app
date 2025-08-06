@@ -21,8 +21,6 @@ class DestroyEventRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'id' => 'required|exists:events,id',
-        ];
+        return [];
     }
 }
